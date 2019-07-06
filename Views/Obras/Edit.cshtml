@@ -1,0 +1,61 @@
+﻿@model SISCO_SAYACv3._5.Models.Obras
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Obras</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ObrasId" />
+            <div class="form-group">
+                <label asp-for="nombre_obra" class="control-label"></label>
+                <input asp-for="nombre_obra" class="form-control" />
+                <span asp-validation-for="nombre_obra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="tipo_obra" class="control-label"></label>
+                <select asp-for="tipo_obra" class="form-control">
+                    <option value="Infraestructuras de transporte">Infraestructuras de transporte</option>
+                    <option value="Infraestructuras hidráulicas">Infraestructuras hidráulicas</option>
+                    <option value="Infraestructuras urbanas">Infraestructuras urbanas</option>
+                    <option value="Edificios públicos">Edificios públicos</option>
+                </select>
+
+                <span asp-validation-for="tipo_obra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion_obra" class="control-label"></label>
+                <input asp-for="direccion_obra" class="form-control" />
+                <span asp-validation-for="direccion_obra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContratistasId" class="control-label"></label>
+                <select asp-for="ContratistasId" class="form-control" asp-items="ViewBag.ContratistasId"></select>
+                <span asp-validation-for="ContratistasId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContratosId" class="control-label"></label>
+                <select asp-for="ContratosId" class="form-control" asp-items="ViewBag.ContratosId"></select>
+                <span asp-validation-for="ContratosId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

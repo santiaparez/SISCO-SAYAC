@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SISCO_SAYACv3._5.Models.Reportes>
+
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+
+<h1>Reportes</h1>
+
+<p>
+    <a asp-action="Create">Crear un nuevo campo</a>
+</p>
+<form asp-controller="Reportes" asp-action="Index" method="get">
+<br/>
+<p>
+    <a asp-action="ExportV2">Descargar Reporte</a>
+</p>
+
+
+    <p>
+        Nombre reporte: <input type="text" name="SearchString" />
+
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_reportes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_reportes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.observacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratos.fecha_inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratos.fecha_fin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratos.fecha_fin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratos.valor_contrato)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_reportes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_reportes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.observacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contratos.ContratosId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contratos.fecha_inicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contratos.fecha_fin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contratos.valor_contrato)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ReportesId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ReportesId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ReportesId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

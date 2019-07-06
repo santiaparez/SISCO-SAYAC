@@ -1,0 +1,109 @@
+﻿@model SISCO_SAYACv3._5.Models.Contratistas
+
+
+@{
+    ViewData["Title"] = "Crear un nuevo campo";
+}
+
+<h1>Crear un nuevo campo</h1>
+
+<h4>Contratistas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="tipo_documento" class="control-label"></label>
+                <select asp-for="tipo_documento" class="form-control" id="tipo_documento" onchange="{ if (this.value == 'CC') { document.getElementById('segundo_nombre').disabled = false } else { document.getElementById('segundo_nombre').disabled = true } }
+                                                                                                    { if (this.value == 'CC') { document.getElementById('primer_apellido').disabled = false } else { document.getElementById('primer_apellido').disabled = true } }
+                                                                                                    { if (this.value == 'CC') { document.getElementById('segundo_apellido').disabled = false } else { document.getElementById('segundo_apellido').disabled = true } }">
+                    <option value="NIT" selected>NIT</option>
+                    <option value="CC">CC</option>
+                </select>
+                <span asp-validation-for="tipo_documento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numero_identificacion" class="control-label"></label>
+                <input asp-for="numero_identificacion" class="form-control" />
+                <span asp-validation-for="numero_identificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="primer_nombre" class="control-label"></label>
+                <input asp-for="primer_nombre" class="form-control" />
+                <span asp-validation-for="primer_nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="segundo_nombre" class="control-label"></label>
+                <input asp-for="segundo_nombre" class="form-control" id="segundo_nombre" name="segundo_nombre" disabled  />
+                <span asp-validation-for="segundo_nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="primer_apellido" class="control-label"></label>
+                <input asp-for="primer_apellido" class="form-control" id="primer_apellido" name="primer_apellido" disabled />
+                <span asp-validation-for="primer_apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="segundo_apellido" class="control-label"></label>
+                <input asp-for="segundo_apellido" class="form-control" id="segundo_apellido" name="segundo_apellido" disabled />
+                <span asp-validation-for="segundo_apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefono" class="control-label"></label>
+                <input asp-for="telefono" class="form-control" />
+                <span asp-validation-for="telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" />
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correo_electronico" class="control-label"></label>
+                <input asp-for="correo_electronico" class="form-control" />
+                <span asp-validation-for="correo_electronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#tipo_documento").change(function () {
+                if ((this).val() === "1") {
+                    $("#segundo_nombre").prop('disabled', true);
+                    $("#primer_apellido").prop('disabled', true);
+                    $("#segundo_apellido").prop('disabled', true);
+                } else {
+                    $("#segundo_nombre").prop('disabled', false);
+                    $("#primer_apellido").prop('disabled', false);
+                    $("#segundo_apellido").prop('disabled', false);
+                }
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#tipo_documento").change(function () {
+            var method = $('option:selected', this).text();
+            if (method == "CC") {
+                $('#primer_nombre').text("Primer Nombre")
+            } else if (method == "NIT") {
+                $('#primer_nombre').html("Nombre Empresa")
+            }
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,77 @@
+﻿@model SISCO_SAYACv3._5.Models.Contratistas
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Contratistas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ContratistasId" />
+            <div class="form-group">
+                <label asp-for="tipo_documento" class="control-label"></label>
+                <select asp-for="tipo_documento" class="form-control">
+                    <option value="CC">CC</option>
+                    <option value="NIT">NIT</option>
+                </select>
+                <span asp-validation-for="tipo_documento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numero_identificacion" class="control-label"></label>
+                <input asp-for="numero_identificacion" class="form-control" />
+                <span asp-validation-for="numero_identificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="primer_nombre" class="control-label"></label>
+                <input asp-for="primer_nombre" class="form-control" />
+                <span asp-validation-for="primer_nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="segundo_nombre" class="control-label"></label>
+                <input asp-for="segundo_nombre" class="form-control" />
+                <span asp-validation-for="segundo_nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="primer_apellido" class="control-label"></label>
+                <input asp-for="primer_apellido" class="form-control" />
+                <span asp-validation-for="primer_apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="segundo_apellido" class="control-label"></label>
+                <input asp-for="segundo_apellido" class="form-control" />
+                <span asp-validation-for="segundo_apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefono" class="control-label"></label>
+                <input asp-for="telefono" class="form-control" />
+                <span asp-validation-for="telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="direccion" class="control-label"></label>
+                <input asp-for="direccion" class="form-control" />
+                <span asp-validation-for="direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correo_electronico" class="control-label"></label>
+                <input asp-for="correo_electronico" class="form-control" />
+                <span asp-validation-for="correo_electronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

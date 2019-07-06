@@ -1,0 +1,84 @@
+﻿@model SISCO_SAYACv3._5.Models.Contratos
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Contratos</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fecha_inicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fecha_fin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fecha_fin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.valor_contrato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.valor_contrato)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tiempo_desfase)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tiempo_desfase)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.porcentaje_multa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.porcentaje_multa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.porcentaje_adicional)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.porcentaje_adicional)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.observaciones)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Contratistas)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Contratistas.numero_identificacion)
+        </dd>
+        <dt class="col-sm-2">
+            Valor de la multa:
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.ValorMulta
+        </dd>
+        <dt class="col-sm-2">
+            Tiempo de desfase:
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.TiempoDesfase
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ContratosId">Editar</a> |
+    <a asp-action="Index">Volver a la lista</a>
+</div>

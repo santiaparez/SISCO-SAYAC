@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SISCO_SAYACv3._5.Models.Contratistas>
+
+@{
+    ViewData["Title"] = "Contratistas";
+}
+
+<h1>Contratistas</h1>
+
+<p>
+    <a asp-action="Create">Crear un nuevo campo</a>
+</p>
+<form asp-controller="Contratistas" asp-action="Index" method="get">
+
+    <p>
+        Numero Documento: <input type="number" name="SearchString" />
+
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo_documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numero_identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.primer_nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.segundo_nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.primer_apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.segundo_apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.correo_electronico)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo_documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numero_identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.primer_nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.segundo_nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.primer_apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.segundo_apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.correo_electronico)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ContratistasId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContratistasId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContratistasId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

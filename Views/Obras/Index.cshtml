@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SISCO_SAYACv3._5.Models.Obras>
+
+@{
+    ViewData["Title"] = "Obras";
+}
+
+<h1>Obras</h1>
+
+<p>
+    <a asp-action="Create">Crear un nuevo campo</a>
+</p>
+<form asp-controller="Obras" asp-action="Index" method="get">
+
+    <p>
+        Nombre obra: <input type="text" name="SearchString" />
+
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_obra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo_obra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion_obra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratistas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contratos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre_obra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo_obra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.direccion_obra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contratistas.numero_identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contratos.ContratosId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ObrasId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ObrasId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.ObrasId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

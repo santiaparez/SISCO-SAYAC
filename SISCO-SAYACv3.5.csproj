@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-SISCO_SAYACv3._5-B0528569-5ADC-4510-AF44-DC8664F527B8</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>SISCO_SAYACv3._5</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190702233744_one.cs" />
+    <Compile Remove="Migrations\20190702233744_one.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Auditorias\Create.cshtml" />
+    <None Include="Views\Auditorias\Delete.cshtml" />
+    <None Include="Views\Auditorias\Details.cshtml" />
+    <None Include="Views\Auditorias\Edit.cshtml" />
+    <None Include="Views\Auditorias\Index.cshtml" />
+    <None Include="Views\Contratistas\Create.cshtml" />
+    <None Include="Views\Contratistas\Delete.cshtml" />
+    <None Include="Views\Contratistas\Details.cshtml" />
+    <None Include="Views\Contratistas\Edit.cshtml" />
+    <None Include="Views\Contratistas\Index.cshtml" />
+    <None Include="Views\Contratos\Create.cshtml" />
+    <None Include="Views\Contratos\Delete.cshtml" />
+    <None Include="Views\Contratos\Details.cshtml" />
+    <None Include="Views\Contratos\Edit.cshtml" />
+    <None Include="Views\Contratos\Index.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Obras\Create.cshtml" />
+    <None Include="Views\Obras\Delete.cshtml" />
+    <None Include="Views\Obras\Details.cshtml" />
+    <None Include="Views\Obras\Edit.cshtml" />
+    <None Include="Views\Obras\Index.cshtml" />
+    <None Include="Views\Reportes\Create.cshtml" />
+    <None Include="Views\Reportes\Delete.cshtml" />
+    <None Include="Views\Reportes\Details.cshtml" />
+    <None Include="Views\Reportes\Edit.cshtml" />
+    <None Include="Views\Reportes\Index.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Usuarios\Create.cshtml" />
+    <None Include="Views\Usuarios\Delete.cshtml" />
+    <None Include="Views\Usuarios\Details.cshtml" />
+    <None Include="Views\Usuarios\Edit.cshtml" />
+    <None Include="Views\Usuarios\Index.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.2" />
+    <PackageReference Include="jQuery" Version="3.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+</Project>
