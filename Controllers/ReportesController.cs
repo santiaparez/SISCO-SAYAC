@@ -126,6 +126,7 @@ namespace SISCO_SAYACv3._5.Controllers
         public IActionResult Create()
         {
             ViewData["ContratosId"] = new SelectList(_context.Contratos, "ContratosId", "ContratosId");
+            ViewData["ObrasId"] = new SelectList(_context.Obras, "ObrasId", "nombre_obra");
             return View();
         }
 
@@ -145,6 +146,25 @@ namespace SISCO_SAYACv3._5.Controllers
             ViewData["ContratosId"] = new SelectList(_context.Contratos, "ContratosId", "ContratosId", reportes.ContratosId);
             return View(reportes);
         }
+
+        /*[HttpPost("CrearConsulta")]
+        public async Task<IActionResult> CrearConsulta([Bind("NombreConsulta,FechaContratoInferior,FechaContratoSuperior,Contratista,Obra,PorcentajeAvanceInferior,PorcentajeAvanceSuperior,MontoInferior,MontoSuperior,Activo,Terminado")] Consultas consulta)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(consulta);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return BadRequest();
+        }*/
+
+        // TODO: hacer esta funcion
+        /*public async Task<IActionResult> GenerarReporteObras(Consulta consulta)
+        {
+            return View();
+        }*/
 
         // GET: Reportes/Edit/5
         [Authorize(Roles = "Administrator")]

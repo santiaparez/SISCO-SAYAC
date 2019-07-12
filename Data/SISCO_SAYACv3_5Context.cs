@@ -26,7 +26,7 @@ namespace SISCO_SAYACv3._5.Models
 
         public DbSet<SISCO_SAYACv3._5.Models.Usuarios> Usuarios { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Obras>()
                 .HasOne(p => p.Contratistas)
@@ -35,6 +35,6 @@ namespace SISCO_SAYACv3._5.Models
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("ForeignKey_Obras_Contratistas");
 
-        }
+        }*/
     }
 }

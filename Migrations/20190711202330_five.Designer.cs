@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SISCO_SAYACv3._5.Models;
 
 namespace SISCO_SAYACv3._5.Migrations
 {
     [DbContext(typeof(SISCO_SAYACv3_5Context))]
-    partial class SISCO_SAYACv3_5ContextModelSnapshot : ModelSnapshot
+    [Migration("20190711202330_five")]
+    partial class five
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

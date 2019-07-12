@@ -23,5 +23,6 @@ namespace SISCO_SAYACv3._5.Models
         [Required]
         public int ContratosId { get; set; }
         public Contratos Contratos { get; set; }
+        
     }
 }

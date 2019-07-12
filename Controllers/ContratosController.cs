@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +18,7 @@ namespace SISCO_SAYACv3._5.Controllers
     [Authorize]
     public class ContratosController : Controller
     {
-        private readonly SISCO_SAYACv3_5Context _context;
+        public readonly SISCO_SAYACv3_5Context _context;
 
         public ContratosController(SISCO_SAYACv3_5Context context)
         {
@@ -23,7 +26,7 @@ namespace SISCO_SAYACv3._5.Controllers
         }
 
         // GET: Contratos
-        
+
         public async Task<IActionResult> Index()
         {
             var sISCO_SAYACv3_5Context = _context.Contratos.Include(c => c.Contratistas);
@@ -55,12 +58,21 @@ namespace SISCO_SAYACv3._5.Controllers
             return View(contratos);
         }
 
+
         // GET: Contratos/Create
         public IActionResult Create()
         {
+            double porcentajeM = _context.Contratos.Select(b=>b.porcentaje_multa).Last();
+            ViewBag.PorcentajeM = porcentajeM;
+            double porcentajeA = _context.Contratos.Select(b => b.porcentaje_adicional).Last();
+            ViewBag.PorcentajeA = porcentajeA;
+            double tiempoD = _context.Contratos.Select(b => b.tiempo_desfase).Last();
+            ViewBag.TiempoD = tiempoD;
+
             ViewData["ContratistasId"] = new SelectList(_context.Contratistas, "ContratistasId", "numero_identificacion");
             return View();
         }
+
 
         // POST: Contratos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -83,6 +95,13 @@ namespace SISCO_SAYACv3._5.Controllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
+            double porcentajeM = _context.Contratos.Select(b => b.porcentaje_multa).Last();
+            ViewBag.PorcentajeM = porcentajeM;
+            double porcentajeA = _context.Contratos.Select(b => b.porcentaje_adicional).Last();
+            ViewBag.PorcentajeA = porcentajeA;
+            double tiempoD = _context.Contratos.Select(b => b.tiempo_desfase).Last();
+            ViewBag.TiempoD = tiempoD;
+
             if (id == null)
             {
                 return NotFound();

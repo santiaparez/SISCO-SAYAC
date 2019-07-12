@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -43,8 +44,8 @@ namespace SISCO_SAYACv3._5.Models
         public string estado { get; set; }
         public List<Reportes> Reporte { get; set; }
         [Required]
-        public int ContratistasId { get; set; }
         [Display(Name = "Identificacion del contratista:")]
+        public int ContratistasId { get; set; }
         public Contratistas Contratistas { get; set; }
 
         public Obras Obras { get; set; }

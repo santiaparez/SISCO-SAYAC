@@ -30,10 +30,10 @@
                 @Html.DisplayNameFor(model => model.direccion_obra)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contratistas)
+                @Html.DisplayNameFor(model => model.Contratos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contratos)
+                Identificacion Contratista
             </th>
             <th></th>
         </tr>
@@ -51,10 +51,10 @@
                 @Html.DisplayFor(modelItem => item.direccion_obra)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contratistas.numero_identificacion)
+                @Html.DisplayFor(modelItem => item.Contratos.ContratosId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contratos.ContratosId)
+                @Html.DisplayFor(modelItem => item.Contratos.ContratistasId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ObrasId">Editar</a> |

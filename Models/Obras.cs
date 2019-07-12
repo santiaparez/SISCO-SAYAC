@@ -22,11 +22,8 @@ namespace SISCO_SAYACv3._5.Models
         [Display(Name = "Dirreción obra:")]
         public string direccion_obra { get; set; }
         [Required]
-        public int ContratistasId { get; set; }
-        [Display(Name = "Identificacion del Contratista:")]
-        public Contratistas Contratistas { get; set; }
-        public int ContratosId { get; set; }
         [Display(Name = "Identificacion del contrato:")]
+        public int ContratosId { get; set; }       
         public Contratos Contratos { get; set; }
     }
 }

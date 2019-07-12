@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SISCO_SAYACv3._5.Models;
 
 namespace SISCO_SAYACv3._5.Migrations
 {
     [DbContext(typeof(SISCO_SAYACv3_5Context))]
-    partial class SISCO_SAYACv3_5ContextModelSnapshot : ModelSnapshot
+    [Migration("20190710140250_Consulta2")]
+    partial class Consulta2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,6 +120,8 @@ namespace SISCO_SAYACv3._5.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ContratistasId");
+
                     b.Property<int>("ContratosId");
 
                     b.Property<string>("direccion_obra")
@@ -132,6 +136,8 @@ namespace SISCO_SAYACv3._5.Migrations
                         .IsRequired();
 
                     b.HasKey("ObrasId");
+
+                    b.HasIndex("ContratistasId");
 
                     b.HasIndex("ContratosId")
                         .IsUnique();
@@ -200,6 +206,12 @@ namespace SISCO_SAYACv3._5.Migrations
 
             modelBuilder.Entity("SISCO_SAYACv3._5.Models.Obras", b =>
                 {
+                    b.HasOne("SISCO_SAYACv3._5.Models.Contratistas", "Contratistas")
+                        .WithMany("Obra")
+                        .HasForeignKey("ContratistasId")
+                        .HasConstraintName("ForeignKey_Obras_Contratistas")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("SISCO_SAYACv3._5.Models.Contratos", "Contratos")
                         .WithOne("Obras")
                         .HasForeignKey("SISCO_SAYACv3._5.Models.Obras", "ContratosId")

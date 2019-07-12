@@ -44,7 +44,6 @@ namespace SISCO_SAYACv3._5.Models
         [Required]
         public string correo_electronico { get; set; }
 
-        public List<Obras> Obra {get;set;}
         public List<Contratos> Contrato { get; set; }
 
     }

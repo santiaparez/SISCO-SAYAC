@@ -23,7 +23,7 @@ namespace SISCO_SAYACv3._5.Controllers
         // GET: Obras
         public async Task<IActionResult> Index()
         {
-            var sISCO_SAYACv3_5Context = _context.Obras.Include(o => o.Contratistas).Include(o => o.Contratos);
+            var sISCO_SAYACv3_5Context = _context.Obras.Include(o => o.Contratos);
             return View(await sISCO_SAYACv3_5Context.ToListAsync());
         }
 
@@ -36,7 +36,6 @@ namespace SISCO_SAYACv3._5.Controllers
             }
 
             var obras = await _context.Obras
-                .Include(o => o.Contratistas)
                 .Include(o => o.Contratos)
                 .FirstOrDefaultAsync(m => m.ObrasId == id);
             if (obras == null)
@@ -50,8 +49,10 @@ namespace SISCO_SAYACv3._5.Controllers
         // GET: Obras/Create
         public IActionResult Create()
         {
-            ViewData["ContratistasId"] = new SelectList(_context.Contratistas, "ContratistasId", "numero_identificacion");
-            ViewData["ContratosId"] = new SelectList(_context.Contratos, "ContratosId", "ContratosId");
+       
+            List<int> result = _context.Obras.Select(b => b.ContratosId).ToList();
+            ViewData["ContratosId"]= new SelectList(_context.Contratos.Where(b => !result.Contains(b.ContratosId)), "ContratosId", "ContratosId");
+
             return View();
         }
 
@@ -60,7 +61,7 @@ namespace SISCO_SAYACv3._5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ObrasId,nombre_obra,tipo_obra,direccion_obra,ContratistasId,ContratosId")] Obras obras)
+        public async Task<IActionResult> Create([Bind("ObrasId,nombre_obra,tipo_obra,direccion_obra,ContratosId")] Obras obras)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +69,6 @@ namespace SISCO_SAYACv3._5.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ContratistasId"] = new SelectList(_context.Contratistas, "ContratistasId", "numero_identificacion", obras.ContratistasId);
             ViewData["ContratosId"] = new SelectList(_context.Contratos, "ContratosId", "ContratosId", obras.ContratosId);
             return View(obras);
         }
@@ -87,8 +87,8 @@ namespace SISCO_SAYACv3._5.Controllers
             {
                 return NotFound();
             }
-            ViewData["ContratistasId"] = new SelectList(_context.Contratistas, "ContratistasId", "numero_identificacion", obras.ContratistasId);
-            ViewData["ContratosId"] = new SelectList(_context.Contratos, "ContratosId", "ContratosId", obras.ContratosId);
+            List<int> result = _context.Obras.Select(b => b.ContratosId).ToList();
+            ViewData["ContratosId"] = new SelectList(_context.Contratos.Where(b => !result.Contains(b.ContratosId)), "ContratosId", "ContratosId");
             return View(obras);
         }
 
@@ -97,7 +97,7 @@ namespace SISCO_SAYACv3._5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ObrasId,nombre_obra,tipo_obra,direccion_obra,ContratistasId,ContratosId")] Obras obras)
+        public async Task<IActionResult> Edit(int id, [Bind("ObrasId,nombre_obra,tipo_obra,direccion_obra,ContratosId")] Obras obras)
         {
             if (id != obras.ObrasId)
             {
@@ -124,7 +124,6 @@ namespace SISCO_SAYACv3._5.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ContratistasId"] = new SelectList(_context.Contratistas, "ContratistasId", "numero_identificacion", obras.ContratistasId);
             ViewData["ContratosId"] = new SelectList(_context.Contratos, "ContratosId", "ContratosId", obras.ContratosId);
             return View(obras);
         }
@@ -139,7 +138,6 @@ namespace SISCO_SAYACv3._5.Controllers
             }
 
             var obras = await _context.Obras
-                .Include(o => o.Contratistas)
                 .Include(o => o.Contratos)
                 .FirstOrDefaultAsync(m => m.ObrasId == id);
             if (obras == null)
